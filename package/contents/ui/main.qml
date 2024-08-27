@@ -129,7 +129,7 @@ Item {
 
 							PlasmaComponents.ToolButton {
 								text: i18n("Back to ChatGPT")
-								visible: !gptWebView.url.toString().match(/chat\.openai\.com\/(|chat|auth)/);
+								visible: !gptWebView.url.toString().match(/chatgpt\.com/);
 								enabled: visible
 								icon.name: "draw-arrow-back"
 								display: PlasmaComponents.ToolButton.IconOnly
@@ -171,7 +171,7 @@ Item {
 							checkable: true
 							checked: proLinkContainer.visible
 							text: i18n("Im a Pro")
-							visible: gptWebView.url.toString().match(/chat\.openai\.com\/auth/);
+							visible: gptWebView.url.toString().match(/chatgpt\.com/);
 							icon.name: "x-office-contact"
 							display: PlasmaComponents.ToolButton.IconOnly
 							PlasmaComponents.ToolTip.text: text
@@ -332,7 +332,7 @@ Item {
 
 				onNewViewRequested : {
 					console.log("onNewViewRequested");
-					if(request.requestedUrl.toString().match(/https?\:\/\/chat\.openai\.com/)) {
+					if(request.requestedUrl.toString().match(/https?\:\/\/chatgpt\.com/)) {
 						gptWebView.url = request.requestedUrl;
 						console.log(request.url);
 					} else {
@@ -347,7 +347,7 @@ Item {
 
 				onNavigationRequested: {
 					if(request.navigationType == WebEngineNavigationRequest.LinkClickedNavigation) {
-						if(request.url.toString().match(/https?\:\/\/chat\.openai\.com/)) {
+						if(request.url.toString().match(/https?\:\/\/chatgpt\.com/)) {
 							gptWebView.url = request.url;
 							console.log(request.url);
 						} else {
